@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -54,7 +55,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy("created_at", "desc")->get();
+        
+        $user = Auth::user();
+        if ($user->role === "admin") {
+            $posts = Post::orderBy("created_at", "desc")->get();
+        }else{
+            $posts = $user->posts;
+        }
 
         return view("admin.posts.index", compact("posts"));
 
@@ -89,6 +96,8 @@ class PostController extends Controller
         $post = new Post();
 
         $post-> fill($validatedData);
+
+        $post->user_id = Auth::user()->id;
 
         $post->slug = $this->generateSlug($post->title);
 

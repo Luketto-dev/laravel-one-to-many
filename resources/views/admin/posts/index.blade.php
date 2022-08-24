@@ -13,6 +13,7 @@
                 <th>ID</th>
                 <th>Titolo</th>
                 <th>Slug</th>
+                <th>Autore</th>
                 <th>Azioni</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{$post->id}}</td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
+                <td>{{$post->user->name}}</td>
                 <td>
                     <div class="d-flex">
                         <a class="btn btn-info" href="{{ route('admin.posts.show', $post->slug) }}">Dettagli</a>

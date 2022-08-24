@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <label>Indirizzo</label>
                     <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" rows="10" placeholder="inserisci indirizzo" 
-                    required value="{{ old('address', $user->details->address) }}">
+                    required value="{{ old('address', $user->details ? $user->details->address : '') }}">
                     @error('address')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <label>Città</label>
                     <input type="text" name="city" class="form-control @error('city') is-invalid @enderror" rows="10" placeholder="inserisci Città" 
-                    required value="{{ old('city', $user->details->city) }}">
+                    required value="{{ old('city', $user->details ? $user->details->city : '') }}">
                     @error('city')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label>Provincia</label>
                     <input type="text" name="province" class="form-control @error('city') is-invalid @enderror" rows="10" placeholder="inserisci provincia" 
-                    required value="{{ old('province', $user->details->province) }}">
+                    required value="{{ old('province', $user->details ? $user->details->province : '') }}">
                     @error('province')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label>Telefono</label>
                     <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" rows="10" placeholder="inserisci telefono" 
-                    required value="{{ old('phone', $user->details->phone) }}">
+                    required value="{{ old('phone', $user->details ? $user->details->phone : '') }}">
                     @error('phone')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

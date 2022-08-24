@@ -30,7 +30,9 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
         
-
+        // può capitare che nella seconda tab non ci sia ancora nessuna informazione
+        //sull utente indicato
+        //in questo caso dobbiamo crearli noi manualmente, come se stessimo facendo il CREATE
         // dobbiamo fare un controllo e vedere se esistono i dettagli di quell utente perchè potrebbero non esistere inizialmente
         if (!$user->details) {
             $user->details = new UserDetail();
