@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 
-@section('page_title', 'Lista Post')
-
-
+@section('page_title', 'Utenti Registrati')
 
 @section('content')
 <div class="container">
@@ -11,18 +9,20 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Titolo</th>
-                <th>Slug</th>
+                <th>Nome</th>
+                <th>Email</th>
                 <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ($posts as $post)
+        @foreach ($users as $user)
             <tr>
-                <td>{{$post->id}}</td>
-                <td>{{$post->title}}</td>
-                <td>{{$post->slug}}</td>
+                <td>{{$user->id}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
                 <td>
+                    <a class="btn btn-warning" href="{{ route('admin.users.edit', $user->id) }}">Modifica</a> 
+                    {{-- 
                     <div class="d-flex">
                         <a class="btn btn-info" href="{{ route('admin.posts.show', $post->slug) }}">Dettagli</a>
                         <a class="btn btn-warning" href="{{ route('admin.posts.edit', $post->slug) }}">Modifica</a>
@@ -34,14 +34,14 @@
                         </form>
                         
                     </div>
-                    
+                     --}}
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
-</div>
+{{--</div>
     <div class="text-center py-3">
         <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Aggiungi Post</a>
-    </div>
+    </div>--}}
 @endsection

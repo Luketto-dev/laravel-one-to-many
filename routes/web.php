@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,13 @@ Route::middleware("auth")
     //crea una rotta per la home-page amministrativa
     Route::get('/', 'HomeController@index')->name('index');
 
+    //rotta per la index degli utenti, mi mostra la lista degli utente
+    Route::get('/users', 'UserController@index')->name('users.index');
+    Route::put('/users/{user}', 'UserController@update')->name('users.update');
+    Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
+    
+
+    //mi crea tutte le rotte crud per i post
     Route::resource("posts", "PostController");
 });
 
